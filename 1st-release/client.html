@@ -1,6 +1,6 @@
 <html>
     <head>
-        <meta http-equiv="refresh" content="10">.
+        <meta http-equiv="refresh" content="5">
         <meta charset="utf-8">
         <title>Meu Primeiro Jogo Multiplayer</title>
         <style>
@@ -16,14 +16,33 @@
             const screen = document.getElementById('screen')
             const context = screen.getContext('2d')
 
-            const color = 'red'
-            const positionX = 0
-            const positionY = 0
-            const width = 250
-            const height = 250
+            const game = {
+                players : {
+                'player1' : { x: 1, y:1 },
+                'player2' : { x: 9, y:9 }
+                },
+                fruits: {
+                'fruit1' : { x: 3, y: 1}
+                }
+            }
 
-            context.fillStyle = color
-            context.fillRect(positionX, positionY, width, height)
+            renderScreen()
+            
+            function renderScreen() {
+                for (playerId in game.players) {
+                    const player = game.players[playerId]
+                    context.fillStyle = 'black'
+                    context.fillRect(player.x, player.y, 1, 1)
+
+                }
+
+                for(fruitId in game.fruits) {
+                    const fruit = game.fruits[fruitId]
+                    context.fillStyle = 'green'
+                    context.fillRect(fruit.x, fruit.y, 1, 1)
+                }
+            }
+
 
         </script>
     </body>
